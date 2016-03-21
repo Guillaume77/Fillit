@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 12:56:28 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/18 18:34:55 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 12:05:00 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 typedef struct	s_tetri
 {
-	int			tab[26];
+	int			*tab;
 	char		carac;
 }				t_tetri;
 

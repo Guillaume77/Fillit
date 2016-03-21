@@ -6,13 +6,13 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/18 19:59:18 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 15:03:52 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		fill_lr(int *map, int *tab, int i, int size)
+int		fill_lr(int *map, int *tab, int i, int size, int size_map)
 {
 	int	cpt;
 	int	sv_i;
@@ -26,6 +26,8 @@ int		fill_lr(int *map, int *tab, int i, int size)
 		{
 			if (map[i] & tab[i])
 				cpt = 1;
+			if (check_length(map[i] & tab[i]) >= size_map)
+				return (0);
 			i++;
 		}
 		i = sv_i;
@@ -45,49 +47,36 @@ int		fill_map(int *map, int *tab, int i, int size)
 	return (get_size(map));
 }
 
-int		is_fillit(int *map, int *tab, int size_map, int size)
+void	copy_tab(int *a, int *b)
 {
 	int	i;
-	int	save_size;
-	int	new_size;
-	int	*map_tmp;
-	int	*save_map;
-	int	*save_tab;
-	int	*tab_tmp;
-	int	*sv_tab;
 
 	i = -1;
-	tab_tmp = tab;
-	sv_tab = tab;
-	save_size = 0;
-	while (++i < size_map)
+	while (++i < 26)
+		a[i] = b[i];
+}
+
+int		is_fillit(int *map, int *tab, int size_map, int size)
+{
+	int	sv_tab[26];
+	int	i;
+
+	i = 0;
+	copy_tab(sv_tab, tab);
+	while (!(fill_lr(map, tab, i, size, size_map)))
 	{
-		fill_lr(map, tab_tmp, i, size);
-		map_tmp = map;
-		if ((new_size = fill_map(map_tmp, tab_tmp, i, size)) > size_map)
+		if (!bit_down(sv_tab, ++size))
 		{
-			if (!save_size)
-				save_size = new_size;
-			if (new_size < save_size)
-			{
-				save_tab = tab_tmp;
-				save_size = new_size;
-				save_map = map_tmp;
-			}
-			bit_down(sv_tab, ++size);
-			printf("NON\n", size_map);
-			print_bit(sv_tab, size);
-			putchar('\n');
-			tab_tmp = sv_tab;
-		}
-		else
-		{
-			map = map_tmp;
-			return (size_map);
-		}
+/*		supprime le tetri (map + reinitialisation);
+		tetri--;
+		tetri[n]++;
+		check(tetri);
+		tetri++;
+*/			
+		copy_tab(tab, sv_tab);
+		i++;
 	}
-	tab = save_tab;
-	return (save_size);
+	if ((new_size = fill_map(map_tmp, tab_tmp, i, size)) > size_map)
 }
 
 int		fillit(int *map, t_tetri *tetri, int length)
@@ -98,17 +87,10 @@ int		fillit(int *map, t_tetri *tetri, int length)
 	int	size_map;
 
 	j = -1;
-	size_map = get_size(tetri[0].tab);
-	while (++j < length)
+	size_map = square_min(nb_tetris);
+	while (++j < nb_tetris)
 	{
-		size = get_size(tetri[j].tab);
-		print_bit(tetri[j].tab, size);
-		printf("Tetri\n");		
-		size_map = is_fillit(map, tetri[j].tab, size_map, size);
-		printf("%d\n", size_map);
-		print_bit(map, size_map);
-		putchar('\n');
-		sleep(2);
+		is_fillit(map, tetri[j].tab, size_map, size);
 	}
 	return (size_map);
 }

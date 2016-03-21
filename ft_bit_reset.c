@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 17:05:48 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/18 18:33:52 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 13:38:02 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		bit_convert(char *str)
 	while (str[i])
 	{
 		if (str[i] == '#')
-			nb += ft_power(power, 2);
+			nb += ft_power(2, power);
 		++i;
 		++power;
 	}
