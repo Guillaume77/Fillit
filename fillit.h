@@ -6,7 +6,11 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 12:56:28 by gubourge          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/03/20 13:47:44 by daugier          ###   ########.fr       */
+=======
+/*   Updated: 2016/03/21 12:05:00 by gubourge         ###   ########.fr       */
+>>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +31,11 @@
 
 typedef struct	s_tetris2
 {
+<<<<<<< HEAD
 	int			tetris[4];
+=======
+	int			*tab;
+>>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 	char		carac;
 }				t_tetris2;
 

@@ -6,11 +6,24 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:45:06 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/18 19:15:31 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 14:23:07 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+int		check_length(int length)
+{
+	int	nb;
+
+	nb = 0;
+	while (length > 0)
+	{
+		length /= 2;
+		nb++;
+	}
+	return (nb);
+}
 
 int		get_size(int *tab)
 {

@@ -6,7 +6,11 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 17:05:48 by gubourge          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/03/21 15:12:58 by daugier          ###   ########.fr       */
+=======
+/*   Updated: 2016/03/21 13:38:02 by gubourge         ###   ########.fr       */
+>>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +28,7 @@ void		bit_convert(char *buf, t_tetri *tetris)
 	tetris->tetris = (t_tetris2*)malloc(sizeof(t_tetris2) * tetris->nb_tetris);
 	while (buf[++i])
 	{
+<<<<<<< HEAD
 		k = -1;
 		while ((buf[i] != '\n' && buf[i + 1] != '\n') && buf[i])
 		{
@@ -40,6 +45,12 @@ void		bit_convert(char *buf, t_tetri *tetris)
 			i++;
 		}
 		j++;
+=======
+		if (str[i] == '#')
+			nb += ft_power(2, power);
+		++i;
+		++power;
+>>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 	}
 }
 
