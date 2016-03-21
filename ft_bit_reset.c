@@ -6,29 +6,41 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 17:05:48 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/18 18:33:52 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 15:12:58 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		bit_convert(char *str)
+void		bit_convert(char *buf, t_tetri *tetris)
 {
 	int	i;
+	int	j;
+	int	k;
 	int	power;
-	int	nb;
 
-	nb = 0;
-	i = 0;
-	power = 0;
-	while (str[i])
+	i = -1;
+	j = 0;
+	tetris->tetris = (t_tetris2*)malloc(sizeof(t_tetris2) * tetris->nb_tetris);
+	while (buf[++i])
 	{
-		if (str[i] == '#')
-			nb += ft_power(power, 2);
-		++i;
-		++power;
+		k = -1;
+		while ((buf[i] != '\n' && buf[i + 1] != '\n') && buf[i])
+		{
+			power = 0;
+			tetris->tetris[j].tetris[++k] = 0;
+			while (buf[i] != '\n')
+			{
+				if (buf[i] == '#')
+					tetris->tetris[j].tetris[k] += ft_power(2, power);
+				if (buf[i] == '#' || buf[i] == '.')
+					power++;
+				i++;
+			}
+			i++;
+		}
+		j++;
 	}
-	return (nb);
 }
 
 int		is_more_left(int *tab, int size)
