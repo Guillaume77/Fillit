@@ -5,26 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/17 16:38:15 by gubourge          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/21 13:12:00 by daugier          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-=======
-/*   Updated: 2016/03/21 12:19:06 by gubourge         ###   ########.fr       */
+/*   Created: 2016/03/21 15:33:42 by gubourge          #+#    #+#             */
+/*   Updated: 2016/03/21 16:50:01 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 #include "fillit.h"
 
 int		main(int ac, char **av)
 {	
-<<<<<<< HEAD
 	t_tetri tetris;
 	int		i;
 
@@ -35,34 +27,31 @@ int		main(int ac, char **av)
 		ft_putstr("usage : enter one parameter only\n");
 	else
 	{
+		tetris.map[0] = 0;
+		tetris.map[1] = 0;
+		tetris.map[2] = 0;
+		tetris.map[3] = 0;
+		tetris.map[4] = 0;
+		tetris.map[5] = 0;
+		tetris.map[6] = 0;
+		tetris.map[7] = 0;
+		tetris.map[8] = 0;
+		tetris.map[9] = 0;
+		tetris.map[10] = 0;
+		tetris.map[11] = 0;
+		tetris.map[12] = 0;
+		tetris.map[13] = 0;
+		tetris.map[14] = 0;
+		tetris.map[15] = 0;
+		print_bit(tetris.map, 16);
+		sleep(2);
 		if (ft_check_map(av[1], &tetris))
 		{
-			while (++i < tetris.nb_tetris)
-				print_bit(tetris.tetris[i].tetris, 4);
+			printf("JE PUE\n");
+			fillit(&tetris);
+//			print_square()
 		}
 		else
 			ft_putstr("error\n");
 	}
-=======
-	t_tetri tetri[4];
-	int	*map;
-	int	i;
-
-	i = 0;
-	map = (int *)malloc(sizeof(int) * 26);
-	while (i < 4)
-	{
-		tetri[i].tab = (int *)malloc(sizeof(int) * 26);
-		bzero(tetri[i].tab, 26);
-		tetri[i].tab[0] = 3;
-		tetri[i].tab[1] = 3;
-		tetri[i].tab[2] = 0;
-		tetri[i].tab[3] = 0;
-		bit_reset(tetri[i].tab, 4);
-		++i;
-	}	
-	bzero(map, 26);
-	print_square(map, tetri, fillit(map, tetri, 4), 4);
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
-	return (0);
 }

@@ -6,42 +6,46 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/21 15:03:52 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/21 17:11:18 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		fill_lr(int *map, int *tab, int i, int size, int size_map)
+int		fill_lr(int *map, t_tetris2 *tetris, int size_map)
 {
 	int	cpt;
 	int	sv_i;
 
 	cpt = 1;
-	sv_i = i;
+	sv_i = tetris->i;
 	while (cpt)
 	{
 		cpt = 0;
-		while (i < size)
+		while (tetris->i < tetris->size)
 		{
-			if (map[i] & tab[i])
+			if (map[tetris->i] & TET[tetris->i])
 				cpt = 1;
-			if (check_length(map[i] & tab[i]) >= size_map)
+			if (check_length(map[tetris->i] | TET[tetris->i]) >= size_map)
 				return (0);
-			i++;
+			tetris->i++;
 		}
-		i = sv_i;
+		tetris->i = sv_i;
 		if (cpt)
-			bit_right(tab, size);
+			bit_right(TET, tetris->size);
 	}
 	return (1);
 }
 
-int		fill_map(int *map, int *tab, int i, int size)
+int		fill_map(int *map, t_tetris2 *tetris)
 {
-	while (i < size)
+	int	i;
+
+	i = tetris->i;
+	printf("%d - size\n", tetris->size);
+	while (i < tetris->size)
 	{
-		map[i] |= tab[i];
+		map[i] |= TET[i];
 		i++;
 	}
 	return (get_size(map));
@@ -52,45 +56,51 @@ void	copy_tab(int *a, int *b)
 	int	i;
 
 	i = -1;
-	while (++i < 26)
+	while (++i < 16)
 		a[i] = b[i];
 }
 
-int		is_fillit(int *map, int *tab, int size_map, int size)
+int		is_fillit(t_tetri *tetris, int size_map)
 {
-	int	sv_tab[26];
+	int	sv_tab[16];
+	int	size;
 	int	i;
+	int	j;
 
-	i = 0;
-	copy_tab(sv_tab, tab);
-	while (!(fill_lr(map, tab, i, size, size_map)))
+	j = -1;
+	while (++j < tetris->nb_tetris)
 	{
-		if (!bit_down(sv_tab, ++size))
+		TET[j].size = get_size(TET[j].tetris);
+		copy_tab(sv_tab, TET[j].tetris);
+//		print_bit(TET[j].tetris, 16);
+//		putchar('\n');
+		while (!(fill_lr(tetris->map, &(TET[j]), size_map)))
 		{
+			bit_down(sv_tab, ++(TET[j].size));				
 /*		supprime le tetri (map + reinitialisation);
 		tetri--;
 		tetri[n]++;
 		check(tetri);
 		tetri++;
-*/			
-		copy_tab(tab, sv_tab);
-		i++;
+*/			copy_tab(TET[j].tetris, sv_tab);
+			(TET[j].i)++;
+		}
+		fill_map(tetris->map, &(TET[j]));
+		print_bit(tetris->map, 16);
+		putchar('\n');
 	}
-	if ((new_size = fill_map(map_tmp, tab_tmp, i, size)) > size_map)
+	return (0);
 }
 
-int		fillit(int *map, t_tetri *tetri, int length)
+int		fillit(t_tetri *tetris)
 {
-	int	i;
-	int	j;
-	int	size;
 	int	size_map;
 
-	j = -1;
-	size_map = square_min(nb_tetris);
-	while (++j < nb_tetris)
+	size_map = square_min(tetris);
+	while (is_fillit(tetris, size_map))
 	{
-		is_fillit(map, tetri[j].tab, size_map, size);
+		printf("NON\n");
+		++size_map;
 	}
 	return (size_map);
 }

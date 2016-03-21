@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/17 17:05:48 by gubourge          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/21 15:12:58 by daugier          ###   ########.fr       */
-=======
-/*   Updated: 2016/03/21 13:38:02 by gubourge         ###   ########.fr       */
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
+/*   Created: 2016/03/21 16:12:53 by gubourge          #+#    #+#             */
+/*   Updated: 2016/03/21 17:07:39 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +24,11 @@ void		bit_convert(char *buf, t_tetri *tetris)
 	tetris->tetris = (t_tetris2*)malloc(sizeof(t_tetris2) * tetris->nb_tetris);
 	while (buf[++i])
 	{
-<<<<<<< HEAD
-		k = -1;
+		k = 0;
+//		ft_bzero(tetris->tetris[j].tetris, 16);
 		while ((buf[i] != '\n' && buf[i + 1] != '\n') && buf[i])
 		{
 			power = 0;
-			tetris->tetris[j].tetris[++k] = 0;
 			while (buf[i] != '\n')
 			{
 				if (buf[i] == '#')
@@ -43,14 +38,10 @@ void		bit_convert(char *buf, t_tetri *tetris)
 				i++;
 			}
 			i++;
+			k++;
 		}
+		bit_reset(TET[j].tetris, 4);
 		j++;
-=======
-		if (str[i] == '#')
-			nb += ft_power(2, power);
-		++i;
-		++power;
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
 	}
 }
 

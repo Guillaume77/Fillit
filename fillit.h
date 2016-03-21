@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/18 12:56:28 by gubourge          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/20 13:47:44 by daugier          ###   ########.fr       */
-=======
-/*   Updated: 2016/03/21 12:05:00 by gubourge         ###   ########.fr       */
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
+/*   Created: 2016/03/21 15:33:34 by gubourge          #+#    #+#             */
+/*   Updated: 2016/03/21 16:23:17 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +24,13 @@
 # include "../Libft/libft.h"
 
 # define MAX(x, y) (x > y ? x : y)
+# define TET tetris->tetris
 
 typedef struct	s_tetris2
 {
-<<<<<<< HEAD
-	int			tetris[4];
-=======
-	int			*tab;
->>>>>>> 9c65b8f85713eb541644a65e4e2fac21ac021d0c
+	int			tetris[16];
+	int			i;
+	int			size;
 	char		carac;
 }				t_tetris2;
 
@@ -51,13 +46,14 @@ char	*ft_getmap(char *str, int fd);
 void	print_bit(int *tab, int size);
 int		ft_check_map(char *buf, t_tetri *tetris);
 void	bit_reset(int *tab, int size);
-int		fillit(t_tetri *tetris, int length);
-void	print_square(t_tetri *tetris, int size, int length);
+int		fillit(t_tetri *tetris);
 int		ft_power(int nb, int power);
 int		get_size(int *tab);
 void	bit_up(int *tab, int size);
 void	bit_down(int *tab, int size);
 void	bit_left(int *tab, int size);
 void	bit_right(int *tab, int size);
+int		square_min(t_tetri *s);
+int		check_length(int length);
 
 #endif
