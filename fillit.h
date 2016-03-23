@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 15:33:34 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/23 15:14:56 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/23 16:08:23 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	bit_down(int *tab, int size);
 void	bit_left(int *tab, int size);
 void	bit_right(int *tab, int size);
 int		square_min(t_tetri *s);
-int		check_length(int length);
+int		check_length(int length, int size_map, int size);
 
 #endif
