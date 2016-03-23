@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 16:12:53 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/21 17:07:39 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:32:21 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void		bit_convert(char *buf, t_tetri *tetris)
 	while (buf[++i])
 	{
 		k = 0;
-//		ft_bzero(tetris->tetris[j].tetris, 16);
+		ft_init_tab(tetris->tetris[j].tetris, 16);
+		tetris->tetris[j].carac = 'A' + j;
 		while ((buf[i] != '\n' && buf[i + 1] != '\n') && buf[i])
 		{
 			power = 0;
