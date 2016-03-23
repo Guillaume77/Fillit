@@ -6,13 +6,13 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:45:06 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/23 12:55:45 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/23 16:09:18 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		check_length(int length)
+int		check_length(int length, int size_map, int size)
 {
 	int	nb;
 
@@ -22,7 +22,9 @@ int		check_length(int length)
 		length /= 2;
 		nb++;
 	}
-	return (nb);
+	if (size_map >= size)
+		return (nb);
+	return (size_map + 1);
 }
 
 int		get_size(int *tab)

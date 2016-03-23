@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/23 15:13:04 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/23 16:21:38 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		fill_lr(int *map, t_tetris2 *tetris, int size_map)
 		{
 			if (map[tetris->i] & TET[tetris->i])
 				cpt = 1;
-			if (check_length(map[tetris->i] | TET[tetris->i]) > size_map)
+			if (check_length(map[tetris->i] | TET[tetris->i], size_map, tetris->size) > size_map)
 				return (0);
 			tetris->i++;
 		}
@@ -61,10 +61,13 @@ void	copy_tab(int *a, int *b)
 
 void	delete_tetris_map(t_tetris2 *tetris, int *map)
 {
-	while (tetris->i < tetris->size)
+	int	i;
+
+	i = tetris->i;
+	while (i < tetris->size)
 	{
-		map[tetris->i] ^= TET[tetris->i];
-		(tetris->i)++;
+		map[i] ^= TET[i];
+		i++;
 	}
 //	tetris->i = 0;
 //	bit_reset(TET, tetris->size);
@@ -83,9 +86,6 @@ int		is_fillit(t_tetri *tetris, int size_map)
 		copy_tab(TET[j].sv_tetris, TET[j].tetris);
 		while (!(fill_lr(tetris->map, &(TET[j]), size_map)))
 		{
-			print_bit(TET[j].tetris, 16);
-			putchar('\n');
-			sleep(1);
 			if (++(TET[j].size) <= size_map)		
 			{
 				bit_down(TET[j].sv_tetris, TET[j].size);
@@ -100,11 +100,15 @@ int		is_fillit(t_tetri *tetris, int size_map)
 				TET[j].i = 0;
 				if (--j == -1)
 					return (1);
+//				if (j == 3)
+//				{
+//					print_bit(tetris->map, 10);
+//					putchar('\n');
+//					print_bit(TET[j].tetris, 10);
+//					putchar('\n');
+//				}
 				delete_tetris_map(&(TET[j]), tetris->map);
 				bit_right(TET[j].tetris, TET[j].size);
-				print_bit(TET[j].tetris, 16);
-				putchar('\n');
-				sleep(1);
 			}
 		}
 		fill_map(tetris->map, &(TET[j]));
@@ -117,10 +121,8 @@ int		fillit(t_tetri *tetris)
 	int	size_map;
 
 	size_map = square_min(tetris);
-	printf("sizemap = %d\n", size_map);
 	while (is_fillit(tetris, size_map))
 	{
-		printf("NON\n");
 		++size_map;
 	}
 	return (size_map);
