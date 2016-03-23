@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 15:33:34 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/21 16:23:17 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/22 16:22:04 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct	s_tetri
 }				t_tetri;
 
 void	bit_convert(char *buf, t_tetri *tetris);
+void	print_square(t_tetri *tetris, int length);
+void	ft_init_tab(int *tab, int size);
 char	*ft_getmap(char *str, int fd);
 void	print_bit(int *tab, int size);
 int		ft_check_map(char *buf, t_tetri *tetris);
