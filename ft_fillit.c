@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 12:19:20 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 12:32:53 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,6 @@ void	delete_tetris_map(t_tetris2 *tetris, int *map)
 		map[i] ^= TET[i];
 		i++;
 	}
-//	tetris->i = 0;
-//	bit_reset(TET, tetris->size);
-//	bit_reset(tetris->sv_tetris, tetris->size);
-//	tetris->size = get_size(TET);
 }
 
 int		is_fillit(t_tetri *tetris, int size_map)
@@ -91,18 +87,6 @@ int		is_fillit(t_tetri *tetris, int size_map)
 			{
 				bit_down(TET[j].sv_tetris, ++(TET[j].size));
 				copy_tab(TET[j].tetris, TET[j].sv_tetris);
-				if (j == 3)
-				{
-					printf("Tetris\n");
-					print_bit(TET[j].tetris, size_map);
-					putchar('\n');
-					printf("Tetris_sv\n");
-					print_bit(TET[j].sv_tetris, size_map);
-					putchar('\n');
-					printf("i = %d\ny = %d\n", TET[j].i, TET[j].y);
-					sleep(3);
-				}
-					
 			}
 			else
 			{
@@ -113,23 +97,7 @@ int		is_fillit(t_tetri *tetris, int size_map)
 				bit_right(TET[j].tetris, TET[j].size);
 			}
 		}
-		if (j == 3)
-		{
-			printf("Map Before\n");
-			print_bit(tetris->map, size_map);
-			putchar('\n');
-			printf("Tetris\n");
-			print_bit(TET[j].tetris, size_map);
-			putchar('\n');
-		}
 		fill_map(tetris->map, &(TET[j]));
-		if (j == 3)
-		{
-			printf("Map After\n");
-			print_bit(tetris->map, size_map);
-			putchar('\n');
-			sleep(3);
-		}
 	}
 	return (0);
 }
