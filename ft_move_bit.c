@@ -6,13 +6,13 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:45:06 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/23 16:09:18 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 12:15:57 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		check_length(int length, int size_map, int size)
+int		check_length(int length)
 {
 	int	nb;
 
@@ -22,12 +22,10 @@ int		check_length(int length, int size_map, int size)
 		length /= 2;
 		nb++;
 	}
-	if (size_map >= size)
-		return (nb);
-	return (size_map + 1);
+	return (nb);
 }
 
-int		get_size(int *tab)
+void	get_size(t_tetris2 *tetris)
 {
 	int	i;
 	int	size;
@@ -36,10 +34,10 @@ int		get_size(int *tab)
 
 	i = -1;
 	max_size = 0;
-	while (tab[++i])
+	while (TET[++i] > 0)
 	{
 		size = 0;
-		tmp = tab[i];
+		tmp = TET[i];
 		while (tmp > 0)
 		{
 			tmp /= 2;
@@ -48,7 +46,9 @@ int		get_size(int *tab)
 		if (size > max_size)
 			max_size = size;
 	}
-	return (MAX(i, size));
+	tetris->y = i;
+	tetris->i = 0;
+	tetris->size = (MAX(i, size));
 }
 
 void	bit_up(int *tab, int size)
