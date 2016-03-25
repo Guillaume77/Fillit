@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 16:12:53 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/25 14:23:14 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/25 14:33:37 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 
 void	bit_convert(char *buf, t_tetri *tetris)
 {
-	int	i;
-	int	j;
-	int	k;
+	int tab[3];
 	int	power;
 
-	i = -1;
-	j = -1;
+	I = -1;
+	J = -1;
 	tetris->tetris = (t_tetris2*)malloc(sizeof(t_tetris2) * tetris->nb_tetris);
-	while (buf[++i])
+	while (buf[++I])
 	{
-		k = 0;
-		ft_init_tab(TET[++j].tetris, 16);
-		TET[j].carac = 'A' + j;
-		while ((buf[i] != '\n' && buf[i + 1] != '\n') && buf[i--])
+		K = 0;
+		ft_init_tab(TET[++J].tetris, 16);
+		TET[J].carac = 'A' + J;
+		while ((buf[I] != '\n' && buf[I + 1] != '\n') && buf[I--])
 		{
 			power = 0;
-			while (buf[++i] != '\n')
+			while (buf[++I] != '\n')
 			{
-				if (buf[i] == '#')
-					TET[j].tetris[k] += ft_power(2, power);
+				if (buf[I] == '#')
+					TET[J].tetris[K] += ft_power(2, power);
 				power++;
 			}
-			k++;
-			i++;
+			K++;
+			I++;
 		}
-		bit_reset(TET[j].tetris, 4);
+		bit_reset(TET[J].tetris, 4);
 	}
 }
 

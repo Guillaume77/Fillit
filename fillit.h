@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 15:33:34 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 14:14:09 by daugier          ###   ########.fr       */
+/*   Updated: 2016/03/25 14:34:07 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "../Libft/libft.h"
 
 # define MAX(x, y) (x > y ? x : y)
 # define TET tetris->tetris
+# define I tab[0]
+# define J tab[1]
+# define K tab[2]
 
 typedef struct	s_tetris2
 {

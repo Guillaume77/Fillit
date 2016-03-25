@@ -6,7 +6,7 @@
 /*   By: daugier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/04 14:36:39 by daugier           #+#    #+#             */
-/*   Updated: 2016/03/24 22:17:15 by daugier          ###   ########.fr       */
+/*   Updated: 2016/03/25 14:35:40 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ int		ft_check_tail(t_tetri *tetris, char *buf)
 		while ((buf[i] != '\n' || buf[i + 1] != '\n') && buf[i])
 		{
 			if (buf[i] == '#')
-				tab[0]++;
+				I++;
 			if (buf[i] == '.')
-				tab[1]++;
+				J++;
 			if (buf[i] == '\n' && buf[i - 1] != '\n' && buf[i + 1])
-				tab[2]++;
-			if (buf[i] == '\n' && (tab[0] + tab[1]) % 4 != 0)
+				K++;
+			if (buf[i] == '\n' && (I + J) % 4 != 0)
 				return (0);
 			i++;
 		}
 		tetris->nb_tetris++;
-		if (tab[0] != 4 || tab[1] != 12 || tab[2] != 3)
+		if (I != 4 || J != 12 || K != 3)
 			return (0);
 	}
 	return (1);
