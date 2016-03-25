@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 22:18:43 by daugier          ###   ########.fr       */
+/*   Updated: 2016/03/25 14:30:06 by gubourge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,8 @@ void	delete_tetris_map(t_tetris2 *tetris, int *map)
 	}
 }
 
-int		is_fillit(t_tetri *tetris, int size_map)
+int		is_fillit(t_tetri *tetris, int size_map, int j)
 {
-	int	j;
-
-	j = -1;
 	while (++j < tetris->nb_tetris)
 	{
 		get_size(&TET[j]);
@@ -96,11 +93,9 @@ int		is_fillit(t_tetri *tetris, int size_map)
 int		fillit(t_tetri *tetris)
 {
 	int	size_map;
-	int	i;
 
-	i = -1;
 	size_map = square_min(tetris);
-	while (is_fillit(tetris, size_map))
+	while (is_fillit(tetris, size_map, -1))
 		++size_map;
 	return (size_map);
 }
