@@ -6,24 +6,11 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 16:45:06 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 12:15:57 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 13:39:02 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-int		check_length(int length)
-{
-	int	nb;
-
-	nb = 0;
-	while (length > 0)
-	{
-		length /= 2;
-		nb++;
-	}
-	return (nb);
-}
 
 void	get_size(t_tetris2 *tetris)
 {

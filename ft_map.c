@@ -6,7 +6,7 @@
 /*   By: daugier <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/09 16:29:27 by daugier           #+#    #+#             */
-/*   Updated: 2016/03/22 14:02:44 by daugier          ###   ########.fr       */
+/*   Updated: 2016/03/24 13:40:30 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,26 @@ void	ft_init_tab(int *tab, int size)
 	i = 0;
 	while (i < size)
 		tab[i++] = 0;
+}
+
+int		check_length(int length)
+{
+	int	nb;
+
+	nb = 0;
+	while (length > 0)
+	{
+		length /= 2;
+		nb++;
+	}
+	return (nb);
+}
+
+void	copy_tab(int *a, int *b)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 16)
+		a[i] = b[i];
 }

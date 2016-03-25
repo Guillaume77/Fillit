@@ -6,7 +6,7 @@
 #    By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/10/29 17:16:58 by gubourge          #+#    #+#              #
-#    Updated: 2016/03/23 12:50:05 by gubourge         ###   ########.fr        #
+#    Updated: 2016/03/24 14:15:20 by daugier          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,15 +25,18 @@ SRCS = 	main.c \
 		ft_power.c \
 		ft_print_bit.c \
 		ft_read_map.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_strlen.c \
 
 OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra
 
-all: $(NAME)
-
 $(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) ../Libft2/libft.a
+	$(CC) -o $(NAME) $(OBJS)
+
+all: $(NAME)
 
 clean:
 	$(RM) $(OBJS)

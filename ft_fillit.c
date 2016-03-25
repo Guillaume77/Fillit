@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/18 14:08:59 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 12:32:53 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 22:18:43 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,6 @@ int		fill_map(int *map, t_tetris2 *tetris)
 		i++;
 	}
 	return (0);
-}
-
-void	copy_tab(int *a, int *b)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 16)
-		a[i] = b[i];
 }
 
 void	delete_tetris_map(t_tetris2 *tetris, int *map)
@@ -108,11 +99,7 @@ int		fillit(t_tetri *tetris)
 	int	i;
 
 	i = -1;
-	while (++i < tetris->nb_tetris)
-	{
-	}
 	size_map = square_min(tetris);
-	printf("sizemap = %d\n", size_map);
 	while (is_fillit(tetris, size_map))
 		++size_map;
 	return (size_map);

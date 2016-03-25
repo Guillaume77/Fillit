@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/17 17:05:58 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/23 15:14:42 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 13:47:45 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	print_bit(int *tab, int size)
 		j = 0;
 		while (j < size)
 		{
-			putchar('0' + ((tab[i] >> j) & 1));
+			ft_putchar('0' + ((tab[i] >> j) & 1));
 			++j;
 		}
-		putchar('\n');
+		ft_putchar('\n');
 	}
-	putchar('\n');
+	ft_putchar('\n');
 }
 
 void	print_square(t_tetri *tetris, int size)
@@ -48,10 +48,10 @@ void	print_square(t_tetri *tetris, int size)
 			count = 1;
 			j = -1;
 			while (++j < tetris->nb_tetris)
-				if ((tetris->tetris[i].tetris[j] >> dec_bit) & 1)
+				if ((tetris->tetris[j].tetris[i] >> dec_bit) & 1)
 				{
 					count = 0;
-					write(1, &tetris->tetris[i].carac, 1);
+					write(1, &tetris->tetris[j].carac, 1);
 				}
 			if (count)
 				write(1, ".", 1);

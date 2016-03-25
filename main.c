@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 15:33:42 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/22 17:27:22 by daugier          ###   ########.fr       */
+/*   Updated: 2016/03/24 13:16:28 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "fillit.h"
 
 int		main(int ac, char **av)
-{	
+{
 	t_tetri tetris;
 	int		i;
 

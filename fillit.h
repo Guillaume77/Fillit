@@ -6,7 +6,7 @@
 /*   By: gubourge <gubourge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/21 15:33:34 by gubourge          #+#    #+#             */
-/*   Updated: 2016/03/24 11:36:48 by gubourge         ###   ########.fr       */
+/*   Updated: 2016/03/24 14:14:09 by daugier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,25 @@ typedef struct	s_tetri
 	t_tetris2	*tetris;
 }				t_tetri;
 
-void	bit_convert(char *buf, t_tetri *tetris);
-void	print_square(t_tetri *tetris, int size);
-void	ft_init_tab(int *tab, int size);
-char	*ft_getmap(char *str, int fd);
-void	print_bit(int *tab, int size);
-int		ft_check_map(char *buf, t_tetri *tetris);
-void	bit_reset(int *tab, int size);
-int		fillit(t_tetri *tetris);
-int		ft_power(int nb, int power);
-void	get_size(t_tetris2 *tetris);
-void	bit_up(int *tab, int size);
-void	bit_down(int *tab, int size);
-void	bit_left(int *tab, int size);
-void	bit_right(int *tab, int size);
-int		square_min(t_tetri *s);
-int		check_length(int length);
+void			ft_putchar(char c);
+void			ft_putstr(char *str);
+int				ft_strlen(char *str);
+void			bit_convert(char *buf, t_tetri *tetris);
+void			print_square(t_tetri *tetris, int size);
+void			ft_init_tab(int *tab, int size);
+char			*ft_getmap(char *str, int fd);
+void			print_bit(int *tab, int size);
+int				ft_check_map(char *buf, t_tetri *tetris);
+void			bit_reset(int *tab, int size);
+int				fillit(t_tetri *tetris);
+int				ft_power(int nb, int power);
+void			get_size(t_tetris2 *tetris);
+void			bit_up(int *tab, int size);
+void			bit_down(int *tab, int size);
+void			bit_left(int *tab, int size);
+void			bit_right(int *tab, int size);
+int				square_min(t_tetri *s);
+int				check_length(int length);
+void			copy_tab(int *a, int *b);
 
 #endif
